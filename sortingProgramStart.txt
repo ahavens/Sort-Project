@@ -1,0 +1,133 @@
+main(){
+
+//create an ifstream object to take in the file
+
+DataCrunch obj = new DataCrunch();
+fstream inputFile = argv[1];
+
+//take the file and input into a read function
+obj->readFile(inputFile);
+
+return 0;
+}
+
+DataCrunch Class{
+
+readFile(ifstream& inputFile)
+{
+    while(inFile)
+    {
+        inFile >> fileWord;
+        //store the word in a vector, vectors will be easiest to use as they just resize
+        vectorHolder.pushBack(fileWord);
+        
+    } 
+    //while loop will repeat until the file is empty, by then all the words should be stored
+}
+
+//assuming that all the words are stored, we now have a sorting function, I want two separate ones right now
+//more then likely we will change this to make it faster, but right now, this is the only 
+//way I know how
+sortByLength(vector& vectorHolder)
+{
+
+    //MODIFIED BUBBLE SORT
+    for(int x=0; x<n; x++)
+
+	{
+        for(int y=1; y<n-1; y++)
+        {
+            if(vectorHolder[x].length>vectorHolder[y].length)
+            {
+                int temp = array[y+1];
+                array[y+1] = array[y];
+                array[y] = temp;
+            }
+        }
+    }
+}
+
+//once we've assumed the vector has been sorted by length, we then need to sort it alphabetically
+//this is quick sort
+/*
+partition(array, left, right)
+     pivotIndex := choosePivot(array, left, right)
+     pivotValue := array[pivotIndex]
+     swap array[pivotIndex] and array[right]
+     storeIndex := left
+     for i from left to right - 1
+         if array[i] < pivotValue
+             swap array[i] and array[storeIndex]
+             storeIndex := storeIndex + 1
+     swap array[storeIndex] and array[right]  // Move pivot to its final place
+     return storeIndex
+    */
+    
+//code for a mergesort which might work better    
+/*    
+void merge(int *,int, int , int );
+void mergesort(int *a, int low, int high)
+{
+    int mid;
+    if (low < high)
+    {
+        mid=(low+high)/2;
+        mergesort(a,low,mid);
+        mergesort(a,mid+1,high);
+        merge(a,low,high,mid);
+    }
+    return;
+}
+void merge(int *a, int low, int high, int mid)
+{
+    int i, j, k, c[50];
+    i = low;
+    k = low;
+    j = mid + 1;
+    while (i <= mid && j <= high)
+    {
+        if (a[i] < a[j])
+        {
+            c[k] = a[i];
+            k++;
+            i++;
+        }
+        else
+        {
+            c[k] = a[j];
+            k++;
+            j++;
+        }
+    }
+    while (i <= mid)
+    {
+        c[k] = a[i];
+        k++;
+        i++;
+    }
+    while (j <= high)
+    {
+        c[k] = a[j];
+        k++;
+        j++;
+    }
+    for (i = low; i < k; i++)
+    {
+        a[i] = c[i];
+    }
+}
+*/
+
+//it might be possible to go ahead and use a selection sort and see if it can be improved, this might not
+//be possible but there's nothing wrong with trying right?
+
+//merge sort for alphabetical
+//radix sort for the word size
+
+//use buckets for bucket recursive
+
+//if the vector is already ordered numerically then we can create a dynamic array that is 
+//the size of the word, the array contains the words that are all the same size 
+while(strinlen(wordBefore) == strinlen(wordAfter)
+
+

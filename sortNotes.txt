@@ -1,0 +1,2 @@
+radix sort and bucket sort for string length
+mergesort, quicksort, and heap sort for sorting the strings by alpha

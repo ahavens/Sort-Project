@@ -1,0 +1,61 @@
+void Order::mergeSort(vector<string>& wordHolder, int low, int high)
+{
+//low and high are supposed to be the highest and lowest index
+//should be called with wordHolder, 0, wordHolder.size()-1
+    int mid;
+    if (low < high)
+    {
+        mid=(low+high)/2;
+        mergeSort(wordHolder, low, mid);
+        mergeSort(wordHolder, mid+1, high);
+        merge(wordHolder, low, high, mid);
+    }
+    return;
+}
+
+// combines the parts of the merge sort
+void Order::merge(vector<string>& wordHolder, int**& pgs, int low, int high, int mid)
+{
+    int i = low;
+    int j = mid+1;
+    int k = low;
+
+    vector<string> wordHolderTemp (wordHolder.size());
+
+    // compares adjacent words and copies whichever goes first alphabetically into wHolderTemp
+    while (i <= mid && j <= high)
+    {
+        if(wordHolder[i].compare(wordHolder[j]) < 1)
+        {
+            wordHolderTemp[k] = wordHolder[i];
+            k++;
+            i++;
+        }
+        else
+        {
+            wordHolderTemp[k] = wordHolder[j];
+            k++;
+            j++;
+        }
+    }
+
+    // from first half, copies words/page numbers from original holder into temp holder
+    while (i <= mid)
+    {
+        wordHolderTemp[k] = wordHolder[i];
+        k++;
+        i++;
+    }
+    // from second half, copies words/page numbers from original holder into temp holder
+    while (j <= high)
+    {
+        wordHolderTemp[k] = wordHolder[j];
+        k++;
+        j++;
+    }
+    // keeps copying words/page numbers (ordered) from temp holder back into the orignal holders until complete
+    for (i = low; i < k; i++)
+    {
+       wordHolder[i] = wordHolderTemp[i];
+    }
+}
